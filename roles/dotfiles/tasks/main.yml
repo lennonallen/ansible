@@ -40,20 +40,8 @@
     dest: "{{ ansible_env.HOME }}/.config/rofi/"
     mode: '0644'
 
-- name: Deploy helix config
-  ansible.builtin.copy:
-    src: helix/
-    dest: "{{ ansible_env.HOME }}/.config/helix/"
-    mode: '0644'
-
 - name: Deploy micro config
   ansible.builtin.copy:
     src: micro/
     dest: "{{ ansible_env.HOME }}/.config/micro/"
-    mode: '0644'
-
-- name: Deploy ranger config
-  ansible.builtin.copy:
-    src: ranger/
-    dest: "{{ ansible_env.HOME }}/.config/ranger/"
     mode: '0644'
