@@ -1,0 +1,59 @@
+- name: Deploy .bashrc
+  ansible.builtin.copy:
+    src: bashrc
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    mode: '0644'
+    
+- name: Deploy .bashrc.d
+  ansible.builtin.copy:
+    src: bashrc.d
+    dest: "{{ ansible_env.HOME }}/.bashrc.d/"
+    mode: '0644'
+
+- name: Deploy bash_profile
+  ansible.builtin.copy:
+    src: bash_profile
+    dest: "{{ ansible_env.HOME }}/.bash_profile"
+    mode: '0644'
+
+- name: Deploy starship config
+  ansible.builtin.copy:
+    src: starship.toml
+    dest: "{{ ansible_env.HOME }}/.config/starship.toml"
+    mode: '0644'
+
+- name: Deploy git config
+  ansible.builtin.template:
+    src: gitconfig.j2
+    dest: "{{ ansible_env.HOME }}/.gitconfig"
+    mode: '0644'
+
+- name: Deploy tmux config
+  ansible.builtin.copy:
+    src: tmux.conf
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    mode: '0644'
+
+- name: Deploy rofi config
+  ansible.builtin.copy:
+    src: rofi/
+    dest: "{{ ansible_env.HOME }}/.config/rofi/"
+    mode: '0644'
+
+- name: Deploy helix config
+  ansible.builtin.copy:
+    src: helix/
+    dest: "{{ ansible_env.HOME }}/.config/helix/"
+    mode: '0644'
+
+- name: Deploy micro config
+  ansible.builtin.copy:
+    src: micro/
+    dest: "{{ ansible_env.HOME }}/.config/micro/"
+    mode: '0644'
+
+- name: Deploy ranger config
+  ansible.builtin.copy:
+    src: ranger/
+    dest: "{{ ansible_env.HOME }}/.config/ranger/"
+    mode: '0644'

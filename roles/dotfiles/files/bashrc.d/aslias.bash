@@ -1,0 +1,6 @@
+alias home="cd && clear"
+alias c="clear"
+alias search="dnf search"
+alias reload="source ~/.bashrc"
+alias supass="pass -c sudo"
+alias dotfiles="ansible-playbook ~/dotfiles/playbook.yml --ask-become-pass"

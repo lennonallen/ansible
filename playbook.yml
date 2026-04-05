@@ -1,0 +1,9 @@
+---
+- hosts: all
+  connection: local
+  become: false
+  vars_files:
+    - host_vars/vault.yml
+  roles:
+    - packages
+    - dotfiles
