@@ -46,7 +46,7 @@
     dest: "{{ ansible_env.HOME }}/.config/micro/"
     mode: '0644'
 
-- name: Test cron job
+- name: Test cron job 2
   ansible.builtin.copy:
     content: "ansible-pull is working\n"
     dest: "{{ ansible_env.HOME }}/ansible_test.txt"
