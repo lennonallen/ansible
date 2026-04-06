@@ -28,12 +28,6 @@
     dest: "{{ user_home }}/.config/starship.toml"
     mode: '0644'
 
-- name: Deploy git config
-  ansible.builtin.template:
-    src: gitconfig.j2
-    dest: "{{ user_home }}/.gitconfig"
-    mode: '0644'
-
 - name: Deploy tmux config
   ansible.builtin.copy:
     src: tmux.conf
@@ -46,8 +40,3 @@
     dest: "{{ user_home }}/.config/rofi/"
     mode: '0644'
 
-- name: Deploy micro config
-  ansible.builtin.copy:
-    src: micro/
-    dest: "{{ user_home }}/.config/micro/"
-    mode: '0644'
