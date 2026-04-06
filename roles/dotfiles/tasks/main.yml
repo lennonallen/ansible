@@ -1,53 +1,59 @@
 - name: Deploy .bashrc
   ansible.builtin.copy:
     src: bashrc
-    dest: "{{ ansible_env.HOME }}/.bashrc"
+    dest: "{{ user_home }}/.bashrc"
     mode: '0644'
     
 - name: Deploy .bashrc.d
   ansible.builtin.copy:
     src: bashrc.d
-    dest: "{{ ansible_env.HOME }}/.bashrc.d/"
+    dest: "{{ user_home }}/.bashrc.d/"
     mode: '0644'
 
 - name: Deploy bash_profile
   ansible.builtin.copy:
     src: bash_profile
-    dest: "{{ ansible_env.HOME }}/.bash_profile"
+    dest: "{{ user_home }}/.bash_profile"
     mode: '0644'
+
+- name: Create .config directory
+  ansible.builtin.file:
+    path: "{{ user_home }}/.config"
+    state: directory
+    mode: '0755'
 
 - name: Deploy starship config
   ansible.builtin.copy:
     src: starship.toml
-    dest: "{{ ansible_env.HOME }}/.config/starship.toml"
+    dest: "{{ user_home }}/.config/starship.toml"
     mode: '0644'
 
 - name: Deploy git config
   ansible.builtin.template:
     src: gitconfig.j2
-    dest: "{{ ansible_env.HOME }}/.gitconfig"
+    dest: "{{ user_home }}/.gitconfig"
     mode: '0644'
 
 - name: Deploy tmux config
   ansible.builtin.copy:
     src: tmux.conf
-    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    dest: "{{ user_home }}/.tmux.conf"
     mode: '0644'
 
 - name: Deploy rofi config
   ansible.builtin.copy:
     src: rofi/
-    dest: "{{ ansible_env.HOME }}/.config/rofi/"
+    dest: "{{ user_home }}/.config/rofi/"
     mode: '0644'
 
 - name: Deploy micro config
   ansible.builtin.copy:
     src: micro/
-    dest: "{{ ansible_env.HOME }}/.config/micro/"
+    dest: "{{ user_home }}/.config/micro/"
     mode: '0644'
 
 - name: Test cron job 2
   ansible.builtin.copy:
     content: "ansible-pull is working\n"
-    dest: "{{ ansible_env.HOME }}/ansible_test.txt"
+    dest: "{{ user_home }}/ansible_test.txt"
     mode: '0644'
